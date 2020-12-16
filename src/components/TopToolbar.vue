@@ -51,10 +51,36 @@ export default {
     },
   }),
   mounted() {
-
+    this.$liff.init(
+      { liffId: "xxxxx" },
+      () => {
+        if (this.$liff.isLoggedIn()) {
+          console.log("isLoggedIn");
+        } else {
+          this.$liff.login();
+        }
+        this.getLineProfile();
+      },
+      (err) => console.error(err.code)
+    );
   },
   methods: {
-
+    getPhoto() {
+      return this.lineprofile.pictureUrl;
+    },
+    getLineProfile() {
+      let _this = this;
+      this.$liff
+        .getProfile()
+        .then(function(profile) {
+          _this.lineprofile = profile;
+          //_this.lineprofile.pictureUrl="\""+_this.lineprofile.pictureUrl+"\""
+          //alert(_this.lineprofile.pictureUrl);
+        })
+        .catch(function(error) {
+          alert("Error getting profile: " + error);
+        });
+    },
   },
 };
 </script>
