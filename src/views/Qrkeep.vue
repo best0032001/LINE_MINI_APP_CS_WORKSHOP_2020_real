@@ -14,6 +14,8 @@
           </v-card-text>
         </v-card>
       </v-dialog>
+
+      Qrkeep
       <v-layout row wrap>
         <v-flex xs12 v-for="item in items" :key="item.id">
           <v-card>
@@ -70,7 +72,7 @@
 </template>
 
 <script>
-import axios from "axios";
+
 export default {
   name: "news",
   data() {
@@ -83,28 +85,10 @@ export default {
     };
   },
   async mounted() {
-    this.news();
+   
   },
   methods: {
-    goDetail(title, deteil, imagelink) {
-      this.detail_title = title;
-      this.detail_deteil = deteil;
-      this.detail_imagelink = imagelink;
-      this.detail = true;
-    },
-    async news() {
-      const url = "https://mobileapi.cmu.ac.th/api/CSWorkShop/news";
-      const headers = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
-      let response = await axios.get(url, headers);
-      if (response.status == 200) {
-        this.items = response.data.data;
-        //alert(response.status);
-      }
-    },
+
   },
 };
 </script>
