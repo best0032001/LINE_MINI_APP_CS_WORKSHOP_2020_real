@@ -52,7 +52,7 @@ export default {
   }),
   mounted() {
     this.$liff.init(
-      { liffId: "xxxxx" },
+      { liffId: "1655229090-byZBM7qV" },
       () => {
         if (this.$liff.isLoggedIn()) {
           console.log("isLoggedIn");
